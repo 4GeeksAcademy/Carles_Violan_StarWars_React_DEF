@@ -1,0 +1,22 @@
+/* #card{
+    width: 300px;
+    margin-bottom: 15px;
+
+} */
+
+/* img.card-img-top {
+    width: 300px;
+    height: 200px;
+    background-color: lightgray;
+} */
+
+h1.titleCharacters {
+    color: red;
+}
+
+
+i.far.fa-heart {
+    color: red;
+    font-size: 28px;
+    float: right;
+}
