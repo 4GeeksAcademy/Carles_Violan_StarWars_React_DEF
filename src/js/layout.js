@@ -10,6 +10,7 @@ import { Single3 } from "./views/single3";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Favorites } from "./views/favorites";
 
 //create your first component
 const Layout = () => {
@@ -29,6 +30,7 @@ const Layout = () => {
 						<Route path="/single2/:theid" element={<Single2 />} />
 						<Route path="/single3/:theid" element={<Single3 />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
+						<Route path="/favorites" element={<Favorites />} />
 						
 					</Routes>
 					<Footer />

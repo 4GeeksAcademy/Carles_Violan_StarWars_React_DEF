@@ -1,39 +1,24 @@
 const getState = ({ getStore, getActions, setStore }) => {
     return {
-      
         store: {
-            personas: [
-                
-            ],
-            planetas: [
-                
-            ],
-            vehiculos: [
-               
-            ],
-            favorites:[
-
-            ]
-            
+            personas: [],
+            planetas: [],
+            vehiculos: [],
+            favorites: []
         },
         actions: {
             exampleFunction: () => {
                 getActions().getCharactersInfo();
                 getActions().getPlanetsInfo();
                 getActions().getVehiclesInfo();
-              },
-            // Use getActions to call a function within a fuction
-            loadSomeData: () => {
-                /**
-                    fetch().then().then(data => setStore({ "foo": data.bar }))
-                */
+                getActions().addFavorite();
+                getActions().removeFavorite();
             },
             getCharacters: async () => {
                 try {
-                    const response = await fetch("https://www.swapi.tech/api/people/")
+                    const response = await fetch("https://www.swapi.tech/api/people/");
                     const data = await response.json();
                     const personas = await Promise.all(data.results.map((character) => getActions().getCharactersInfo(character.uid)));
-                    console.log(personas);
                     setStore({ personas: personas });
                 } catch (error) {
                     console.log(error);
@@ -41,9 +26,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             getCharactersInfo: async (id) => {
                 try {
-                    const response = await fetch(`https://www.swapi.tech/api/people/${id}`)
+                    const response = await fetch(`https://www.swapi.tech/api/people/${id}`);
                     const data = await response.json();
-                    // console.log(data.result.properties);
                     return data.result.properties;
                 } catch (error) {
                     console.log(error);
@@ -51,11 +35,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             getPlanets: async () => {
                 try {
-                    const response = await fetch(`https://www.swapi.tech/api/planets/`)
+                    const response = await fetch("https://www.swapi.tech/api/planets/");
                     const data = await response.json();
-                    const planets = await Promise.all(data.results.map((planets) => getActions().getPlanetsInfo(planets.uid)));
-                    //return data.result.properties;
-                    console.log(planets);
+                    const planets = await Promise.all(data.results.map((planet) => getActions().getPlanetsInfo(planet.uid)));
                     setStore({ planetas: planets });
                 } catch (error) {
                     console.log(error);
@@ -70,13 +52,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.log(error);
                 }
             },
-          
             getVehicles: async () => {
                 try {
-                    const response = await fetch(`https://www.swapi.tech/api/vehicles/`)
+                    const response = await fetch("https://www.swapi.tech/api/vehicles/");
                     const data = await response.json();
-                    const vehicles = await Promise.all(data.results.map((vehicles) => getActions().getVehiclesInfo(vehicles.uid)));
-                    console.log(vehicles);
+                    const vehicles = await Promise.all(data.results.map((vehicle) => getActions().getVehiclesInfo(vehicle.uid)));
                     setStore({ vehiculos: vehicles });
                 } catch (error) {
                     console.log(error);
@@ -91,12 +71,20 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.log(error);
                 }
             },
-            
-            addFavorites: async () => {
-
-                setStore({ favorites: 1 });
+            addFavorite: (item) => {
+                const store = getStore();
+                // if (!store.favorites.some(fav => fav.id === item.id)) {
+                //     setStore({ favorites: [...store.favorites, item] });
+                // }
+                setStore({ favorites: [...store.favorites, item] });
+                
+            },
+      
+            removeFavorite: (item) => {
+                const store = getStore();
+                setStore({ favorites: store.favorites.filter(fav => fav.item !== item) });
             }
-        },
-    }
-}
+        }
+    };
+};
 export default getState;

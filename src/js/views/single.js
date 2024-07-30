@@ -13,7 +13,7 @@ export const Single = props => {
 						<div className="row">
 						<div className="col-sm-3 col-md-6 col-lg-4" style={{ backgroundColor: 'lightgray'}}>
 						
-									<img src="..." className="img-fluid rounded-start" alt="..." />
+						<img src="" />
 															
 						</div>
 						<div className="col-sm-9 col-md-6 col-lg-8">
