@@ -72,7 +72,7 @@ export const Home = () => {
             </div>
 
             <h1 className="titleVehicles" style={{ color: 'red' }}>Vehicles</h1>
-            <div class="d-flex flex-row flex-nowrap overflow-auto">
+            <div className="d-flex flex-row flex-nowrap overflow-auto">
                 {store.vehiculos.map((item, index) => (
                     <div className="col-sm-4" key={index}>
                        <div id="card" className="card" style={{ marginBottom: '15px', padding: '20px' }}>

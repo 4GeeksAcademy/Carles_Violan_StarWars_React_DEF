@@ -8,8 +8,8 @@ export const Navbar = () => {
     return (
         <nav className="navbar navbar-light bg-light">
             <Link to="/">
-                <span className="navbar-brand mb-0 h1">Home</span>
-            </Link>
+				<span className="navbar-brand mb-0 h1"><img src={logoSW}/></span>
+			</Link>
            <p> <Favorites /></p>
             <div className="ml-auto">
                 <Link to="/favorites">

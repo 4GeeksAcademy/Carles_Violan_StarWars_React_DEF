@@ -80,10 +80,15 @@ const getState = ({ getStore, getActions, setStore }) => {
                 
             },
       
-            removeFavorite: (item) => {
+            // removeFavorite: (item) => {
+            //     const store = getStore();
+            //     setStore({ favorites: store.favorites.filter(fav => fav.item !== item) });
+            // }
+            removeFavorite: (itemId) => {
                 const store = getStore();
-                setStore({ favorites: store.favorites.filter(fav => fav.item !== item) });
+                setStore({ favorites: store.favorites.filter(fav => fav.name !== itemId) });
             }
+            
         }
     };
 };
