@@ -10,11 +10,12 @@ export const Navbar = () => {
             <Link to="/">
 				<span className="navbar-brand mb-0 h1"><img src={logoSW}/></span>
 			</Link>
-           <p> <Favorites /></p>
+            <p> <Favorites /></p>
             <div className="ml-auto">
-                <Link to="/favorites">
+                {/* <Link to="/favorites">
                     <button className="btn btn-primary">Read Later</button>
-                </Link>
+                </Link> */}
+                
             </div>
         </nav>
     );
