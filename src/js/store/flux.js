@@ -73,10 +73,10 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             addFavorite: (item) => {
                 const store = getStore();
-                // if (!store.favorites.some(fav => fav.id === item.id)) {
-                //     setStore({ favorites: [...store.favorites, item] });
-                // }
-                setStore({ favorites: [...store.favorites, item] });
+                if (!store.favorites.some(fav => fav.name === item.name)) {
+                    setStore({ favorites: [...store.favorites, item] });
+                }
+                //setStore({ favorites: [...store.favorites, item] });
                 
             },
       

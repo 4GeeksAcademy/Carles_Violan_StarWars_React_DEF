@@ -1,23 +1,39 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 
 export const Favorites = () => {
     const { store, actions } = useContext(Context);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    };
 
     return (
-        <div className="container">
-            {/* <h1 className="titleFavorites">Likes List</h1> */}
-            <div className="row">
-                {store.favorites.map((item, index) => (
-                    <div className="col-sm-8" key={index}>                      
-                        <h4 className="card-title">{item.name}</h4>  
-                        <button onClick={() => actions.removeFavorite(item.name)} className="btn btn-danger">                                   
-                            Remove Favorite
-                        </button>                                                             
-                    </div>
-                ))} 
-            </div>
+        <div className="dropdown">
+            <button 
+                className="btn btn-primary dropdown-toggle" 
+                type="button" 
+                onClick={toggleDropdown}
+            >
+                Favorites ({store.favorites.length})
+            </button>
+            <ul className={`dropdown-menu ${isOpen ? "show" : ""}`}>
+                {store.favorites.length > 0 ? (
+                    store.favorites.map((item, index) => (
+                        <li key={index} className="dropdown-item d-flex justify-content-between align-items-center">
+                            {item.name}
+                            <button 
+                                onClick={() => actions.removeFavorite(item.name)} 
+                                className="btn btn-sm btn-danger">
+                                x
+                            </button>
+                        </li>
+                    ))
+                ) : (
+                    <li className="dropdown-item">No Favorites</li>
+                )}
+            </ul>
         </div>
     );
 };
