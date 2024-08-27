@@ -75,7 +75,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                 const store = getStore();
                 if (!store.favorites.some(fav => fav.name === item.name)) {
                     setStore({ favorites: [...store.favorites, item] });
+                 
+                }else{
+                    alert("this favorite is added click another")
                 }
+               
                 //setStore({ favorites: [...store.favorites, item] });
                 
             },

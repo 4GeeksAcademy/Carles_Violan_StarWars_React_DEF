@@ -15,8 +15,32 @@ h1.titleCharacters {
 }
 
 
-i.far.fa-heart {
+.far.fa-heart {
     color: red;
     font-size: 28px;
     float: right;
 }
+
+
+  /* i.far.fa-heart {
+    color: gray;
+} */
+
+i:link {
+    color: red;
+  }
+  
+  /* visited link */
+  i.far.fa-heart:visited {
+    color: green;
+  }
+  
+  /* mouse over link */
+  i.far.fa-heart:hover {
+    color: hotpink;
+  }
+  
+  /* selected link */
+  i.far.fa-heart:active {
+    color: blue;
+  }

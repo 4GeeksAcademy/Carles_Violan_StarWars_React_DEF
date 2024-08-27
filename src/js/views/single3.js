@@ -6,13 +6,16 @@ import { Context } from "../store/appContext";
 export const Single3 = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
+
+	const imageUrl = `https://starwars-visualguide.com/assets/img/vehicles/${parseInt(params.theid) + 1}.jpg`;
+
 	return (
 		<div className="container">
 			<div className="container-fluid">
 						<div className="row">
-						<div className="col-sm-3 col-md-6 col-lg-4" style={{ backgroundColor: 'lightgray'}}>
+						<div className="col-sm-3 col-md-6 col-lg-4">
 						
-									<img src="..." className="img-fluid rounded-start" alt="..." />
+									{ <img src={imageUrl} alt={store.vehiculos[params.theid].name} style={{ width: '100%' }} /> }
 															
 						</div>
 						<div className="col-sm-9 col-md-6 col-lg-8">
